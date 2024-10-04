@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProducerRepository {
-  private final KafkaOperations<String, MessageReq> kafkaOperations;
+  private final KafkaOperations<String, String> kafkaOperations;
 
-  public ProducerRepository(KafkaOperations<String, MessageReq> kafkaOperations) {
+  public ProducerRepository(KafkaOperations<String, String> kafkaOperations) {
     this.kafkaOperations = kafkaOperations;
   }
 
@@ -21,7 +21,7 @@ public class ProducerRepository {
               new ProducerRecord<>(
                       Constants.TOPIC_FIRST,
                       Constants.KEY_ORDERS,
-                      messageReq))
+                      messageReq.toJSONString()))
               .get()
               .getRecordMetadata();
 

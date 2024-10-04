@@ -1,6 +1,5 @@
 package com.u44437.spring_kafka.conf;
 
-import com.u44437.spring_kafka.model.MessageReq;
 import com.u44437.spring_kafka.repository.ProducerRepository;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -18,12 +17,12 @@ import java.util.Map;
 @EnableKafka
 public class FrontOfficeConfiguration {
   @Bean
-  public KafkaTemplate<String, MessageReq> kafkaTemplate(ProducerFactory<String, MessageReq> pf) {
+  public KafkaTemplate<String, String> kafkaTemplate(ProducerFactory<String, String> pf) {
     return new KafkaTemplate<>(pf);
   }
 
   @Bean
-  public ProducerFactory<String, MessageReq> producerFactory() {
+  public ProducerFactory<String, String> producerFactory() {
     return new DefaultKafkaProducerFactory<>(producerFactoryProperties());
   }
 
@@ -36,7 +35,7 @@ public class FrontOfficeConfiguration {
   }
 
   @Bean
-  public ProducerRepository getProducerRepository(KafkaTemplate<String, MessageReq> kafka) {
+  public ProducerRepository getProducerRepository(KafkaTemplate<String, String> kafka) {
     return new ProducerRepository(kafka);
   }
 }

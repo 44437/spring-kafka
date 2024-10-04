@@ -1,6 +1,8 @@
 package com.u44437.spring_kafka.conf;
 
+import com.u44437.spring_kafka.client.ArbitraryClient;
 import com.u44437.spring_kafka.repository.ConsumerRepository;
+import okhttp3.OkHttpClient;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
@@ -19,15 +21,15 @@ import java.util.Map;
 @EnableKafka
 public class BackOfficeConfiguration {
   @Bean
-  public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<Integer, String>> kafkaListenerContainerFactory(
-          ConsumerFactory<Integer, String> cf) {
-    var factory = new ConcurrentKafkaListenerContainerFactory<Integer, String>();
+  public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> kafkaListenerContainerFactory(
+          ConsumerFactory<String, String> cf) {
+    var factory = new ConcurrentKafkaListenerContainerFactory<String, String>();
     factory.setConsumerFactory(cf);
     return factory;
   }
 
   @Bean
-  public ConsumerFactory<Integer, String> consumerFactory() {
+  public ConsumerFactory<String, String> consumerFactory() {
     return new DefaultKafkaConsumerFactory<>(consumerConfiguration()); }
 
   @Bean
@@ -41,7 +43,17 @@ public class BackOfficeConfiguration {
   }
 
   @Bean
+  public OkHttpClient okHttpClient() {
+    return new OkHttpClient();
+  }
+
+  @Bean
+  public ArbitraryClient arbitraryClient() {
+    return new ArbitraryClient(okHttpClient());
+  }
+
+  @Bean
   public ConsumerRepository getConsumerRepository(){
-    return new ConsumerRepository();
+    return new ConsumerRepository(arbitraryClient());
   }
 }
