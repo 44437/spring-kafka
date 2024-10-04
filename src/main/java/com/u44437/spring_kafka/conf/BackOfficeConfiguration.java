@@ -11,6 +11,7 @@ import org.springframework.kafka.config.KafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
+import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import java.util.Map;
 
@@ -20,7 +21,8 @@ public class BackOfficeConfiguration {
   @Bean
   public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<Integer, String>> kafkaListenerContainerFactory(
           ConsumerFactory<Integer, String> cf) {
-    var factory = new ConcurrentKafkaListenerContainerFactory<Integer, String>(); factory.setConsumerFactory(cf);
+    var factory = new ConcurrentKafkaListenerContainerFactory<Integer, String>();
+    factory.setConsumerFactory(cf);
     return factory;
   }
 
@@ -33,7 +35,8 @@ public class BackOfficeConfiguration {
     return Map.of(
       ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9094",
       ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
-      ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
+      JsonDeserializer.TRUSTED_PACKAGES, "*",
+      ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class,
       ConsumerConfig.GROUP_ID_CONFIG, "test-messages");
   }
 
