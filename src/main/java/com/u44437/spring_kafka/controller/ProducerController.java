@@ -1,9 +1,10 @@
 package com.u44437.spring_kafka.controller;
 
+import com.u44437.spring_kafka.model.MessageReq;
 import com.u44437.spring_kafka.repository.ProducerRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,9 +15,9 @@ public class ProducerController {
     this.producerRepository = producerRepository;
   }
 
-  @PostMapping(path = "/messages/{message}")
-  public ResponseEntity sendMessage(@PathVariable String message){
-    long offset = producerRepository.sendMessage(message);
+  @PostMapping(path = "/messages")
+  public ResponseEntity sendMessage(@RequestBody MessageReq messageReq){
+    long offset = producerRepository.sendMessage(messageReq);
 
     if (offset == -1){
       return ResponseEntity.internalServerError().build();
