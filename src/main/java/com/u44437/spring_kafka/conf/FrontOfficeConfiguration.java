@@ -30,6 +30,7 @@ public class FrontOfficeConfiguration {
       ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9094",
       ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
       ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+//      ProducerConfig.PARTITIONER_CLASS_CONFIG, RoundRobinPartitioner.class); // the default one is viable for now
   }
 
   @Bean

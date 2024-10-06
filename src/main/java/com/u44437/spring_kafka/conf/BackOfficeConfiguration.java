@@ -36,7 +36,7 @@ public class BackOfficeConfiguration {
       ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9094",
       ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
       JsonDeserializer.TRUSTED_PACKAGES, "*",
-      ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class,
+      ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
       ConsumerConfig.GROUP_ID_CONFIG, "test-messages");
   }
 

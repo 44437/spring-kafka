@@ -17,7 +17,7 @@ public class ConsumerRepository {
     this.arbitraryClient = arbitraryClient;
   }
 
-  @KafkaListener(topics = Constants.TOPIC_FIRST)
+  @KafkaListener(topics = Constants.TOPIC_FIRST) // topicPartitions doesn't work
   public void consumeMessage(ConsumerRecord<String, String> record, @Header(KafkaHeaders.OFFSET) Long offset) {
     System.out.printf("Got something: %d-%s \n", offset, record.value());// record.offset() works too
     HttpStatus status = arbitraryClient.sendRequest("/", record.value());

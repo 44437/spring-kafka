@@ -15,7 +15,7 @@
 <h3>Tasks:</h3>
 
 - [X] Take the variable offset etc. along with header.
-- [ ] If you have multiple partitions?
+- [X] If you have multiple partitions?
 - [ ] If you have multiple brokers?
 - [ ] Asynchronous producing, and handle errors by means of callback.
 - [X] Read his some articles that seem useful. https://medium.com/@pravvich - `NAH non-satisfactory`

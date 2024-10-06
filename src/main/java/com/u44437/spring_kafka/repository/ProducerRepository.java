@@ -15,11 +15,12 @@ public class ProducerRepository {
     this.kafkaOperations = kafkaOperations;
   }
 
-  public long sendMessage(MessageReq messageReq) {
+  public long sendMessage(MessageReq messageReq, int partitionKey) {
     try {
       RecordMetadata metadata = kafkaOperations.send(
               new ProducerRecord<>(
                       Constants.TOPIC_FIRST,
+                      partitionKey,
                       Constants.KEY_ORDERS,
                       messageReq.toJSONString()))
               .get()
