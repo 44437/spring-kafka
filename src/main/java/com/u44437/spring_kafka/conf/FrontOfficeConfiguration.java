@@ -34,6 +34,7 @@ public class FrontOfficeConfiguration {
       ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, 3000,// 3 is adequate
       ProducerConfig.RETRIES_CONFIG, Integer.MAX_VALUE,
       ProducerConfig.COMPRESSION_TYPE_CONFIG, "lz4");// none, gzip, snappy, zstd
+//      ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);// default=true
 //      ProducerConfig.PARTITIONER_CLASS_CONFIG, RoundRobinPartitioner.class); // the default one is viable for now
   }
 

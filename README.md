@@ -21,7 +21,7 @@
 - [X] Read his some articles that seem useful. https://medium.com/@pravvich - `NAH non-satisfactory`
 - [X] delivery.timeout.ms in produce-config depends on the (a)synchronous producing, I gather. BUT the suggested thing is to regulate it as the time demanded to be request-timeout with infinite retries. 
 - [X] compression.type
-- [ ] enable.idempotence, by default, is true, but if it is set false?
+- [X] enable.idempotence, by default, is true, but if it is set false?
 - [ ] I see a host of tests.
 - [ ] cleanup.policy
 - [ ] default commit and subscribe concepts have been used, play with them.
