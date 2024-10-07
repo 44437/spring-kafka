@@ -33,7 +33,8 @@ public class BackOfficeConfiguration {
   @Bean
   public Map<String, Object> consumerConfiguration() {
     return Map.of(
-      ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9094",
+      ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9094,localhost:8094",
+      ConsumerConfig.CLIENT_DNS_LOOKUP_CONFIG, "resolve_canonical_bootstrap_servers_only",
       ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
       JsonDeserializer.TRUSTED_PACKAGES, "*",
       ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,

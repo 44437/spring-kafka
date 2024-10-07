@@ -16,11 +16,10 @@
 
 - [X] Take the variable offset etc. along with header.
 - [X] If you have multiple partitions?
-- [ ] If you have multiple brokers?
+- [X] If you have multiple brokers?
 - [ ] Asynchronous producing, and handle errors by means of callback.
 - [X] Read his some articles that seem useful. https://medium.com/@pravvich - `NAH non-satisfactory`
 - [ ] delivery.timeout.ms in produce-config depends on the (a)synchronous producing, I gather. BUT the suggested thing is to regulate it as the time demanded to be request-timeout with infinite retries. 
-- [ ] If you have multiple brokers?
 - [ ] compression.type
 - [ ] enable.idempotence, by default, is true, but if it is set false?
 - [ ] I see a host of tests.
