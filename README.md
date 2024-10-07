@@ -3,13 +3,14 @@
 - Watch out for importing json serializer
 - TDD has died
 - Synchronous producing has been used here
-- You may be required to divorce consumer groups (for conduktor and spring)
+- You may be required to divorce/combine consumer groups (for conduktor and spring)
 ---
 
 <h3>Bugs:</h3>
 
 - Sending strings butchered the message ffff but it works :p
- `Edit: It may be fixed through serializer interface but it is rather complicated, use a package (json, avro (the best) OR jackson, gson) for now` 
+ `Edit: It may be fixed through serializer interface but it is rather complicated, use a package (json, avro (the best) OR jackson, gson) for now`
+- IsCompacted says NO. How, why?
 ---
 
 <h3>Tasks:</h3>
@@ -27,3 +28,10 @@
 - [ ] default commit and subscribe concepts have been used, play with them.
 - [ ] auto.commit.interval.ms: disable it, manual commit is the key.
 - [X] client.dns.lookup
+- [ ] kafka connect
+- [ ] kafka streams
+- [ ] consumer groups
+- [ ] offset management
+- [ ] retention policy
+- [ ] exactly once
+- [ ] leader election
