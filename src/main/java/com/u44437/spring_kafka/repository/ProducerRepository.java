@@ -3,8 +3,8 @@ package com.u44437.spring_kafka.repository;
 import com.u44437.spring_kafka.model.MessageReq;
 import com.u44437.spring_kafka.util.Constants;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
 import org.springframework.kafka.core.KafkaOperations;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,21 +15,16 @@ public class ProducerRepository {
     this.kafkaOperations = kafkaOperations;
   }
 
-  public long sendMessage(MessageReq messageReq, int partitionKey) {
+  @Async
+  public void sendMessage(MessageReq messageReq, int partitionKey) {
     try {
-      RecordMetadata metadata = kafkaOperations.send(
+      kafkaOperations.send(
               new ProducerRecord<>(
                       Constants.TOPIC_FIRST,
                       partitionKey,
                       Constants.KEY_ORDERS,
-                      messageReq.toJSONString()))
-              .get()
-              .getRecordMetadata();
-
-      return metadata.offset();
+                      messageReq.toJSONString()));
     } catch (Exception e) {
       e.printStackTrace();
     }
-
-    return -1;
 }}

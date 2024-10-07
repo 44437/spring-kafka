@@ -25,12 +25,11 @@ public class ProducerController {
       default -> partitionKey = Constants.PARTITION_DEFAULT;
     }
 
-    long offset = producerRepository.sendMessage(messageReq, partitionKey);
-
-    if (offset == -1){
-      return ResponseEntity.internalServerError().build();
+    try {
+      producerRepository.sendMessage(messageReq, partitionKey);
+      return ResponseEntity.ok().build();
+    }catch (Exception e){
+      return ResponseEntity.internalServerError().body(e);
     }
-
-    return ResponseEntity.ok(offset);
   }
 }
