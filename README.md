@@ -22,8 +22,8 @@
 - [X] delivery.timeout.ms in produce-config depends on the (a)synchronous producing, I gather. BUT the suggested thing is to regulate it as the time demanded to be request-timeout with infinite retries. 
 - [X] compression.type
 - [X] enable.idempotence, by default, is true, but if it is set false?
-- [ ] I see a host of tests.
-- [ ] cleanup.policy
+- [X] I see a host of tests. `later on`
+- [X] cleanup.policy
 - [ ] default commit and subscribe concepts have been used, play with them.
 - [ ] auto.commit.interval.ms: disable it, manual commit is the key.
 - [X] client.dns.lookup
