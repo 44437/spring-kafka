@@ -25,13 +25,13 @@
 - [X] enable.idempotence, by default, is true, but if it is set false?
 - [X] I see a host of tests. `later on`
 - [X] cleanup.policy
-- [ ] default commit and subscribe concepts have been used, play with them.
-- [ ] auto.commit.interval.ms: disable it, manual commit is the key.
+- [X] default commit and subscribe concepts have been used, play with them.
+- [X] auto.commit.interval.ms: disable it, manual commit is the key.
 - [X] client.dns.lookup
 - [ ] kafka connect
 - [ ] kafka streams
 - [ ] consumer groups
-- [ ] offset management
+- [X] offset management
 - [ ] retention policy
 - [ ] exactly once
 - [ ] leader election
