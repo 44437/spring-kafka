@@ -1,20 +1,20 @@
 package com.u44437.spring_kafka.controller;
 
 import com.u44437.spring_kafka.model.MessageReq;
+import com.u44437.spring_kafka.repository.ConsumerRepository;
 import com.u44437.spring_kafka.repository.ProducerRepository;
 import com.u44437.spring_kafka.util.Constants;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ProducerController {
   private ProducerRepository producerRepository;
+  private ConsumerRepository consumerRepository;
 
-  public ProducerController(ProducerRepository producerRepository) {
+  public ProducerController(ProducerRepository producerRepository, ConsumerRepository consumerRepository) {
     this.producerRepository = producerRepository;
+    this.consumerRepository =consumerRepository;
   }
 
   @PostMapping(path = "/messages")
@@ -32,5 +32,11 @@ public class ProducerController {
     }
 
     return ResponseEntity.ok(offset);
+  }
+
+  @GetMapping(path = "/messages")
+  public ResponseEntity consumeMessage(){
+    consumerRepository.consumeMessage();
+    return ResponseEntity.ok().build();
   }
 }

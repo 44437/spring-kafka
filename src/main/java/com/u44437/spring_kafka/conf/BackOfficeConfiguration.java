@@ -4,6 +4,7 @@ import com.u44437.spring_kafka.client.ArbitraryClient;
 import com.u44437.spring_kafka.repository.ConsumerRepository;
 import okhttp3.OkHttpClient;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +20,18 @@ import java.util.Map;
 @Configuration
 public class BackOfficeConfiguration {
   @Bean
+  public KafkaConsumer kafkaConsumer(ConcurrentKafkaListenerContainerFactory<String, String> concurrentKafkaListenerContainerFactory){
+    return (KafkaConsumer) concurrentKafkaListenerContainerFactory.getConsumerFactory().createConsumer();
+  }
+
+  @Bean
   public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, String>> kafkaListenerContainerFactory(
+          ConcurrentKafkaListenerContainerFactory<String, String> factory) {
+    return factory;
+  }
+
+  @Bean
+  public ConcurrentKafkaListenerContainerFactory<String, String> concurrentKafkaListenerContainerFactory(
           ConsumerFactory<String, String> cf) {
     var factory = new ConcurrentKafkaListenerContainerFactory<String, String>();
     factory.setConsumerFactory(cf);
@@ -38,7 +50,8 @@ public class BackOfficeConfiguration {
       ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
       JsonDeserializer.TRUSTED_PACKAGES, "*",
       ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
-      ConsumerConfig.GROUP_ID_CONFIG, "test-messages");
+      ConsumerConfig.GROUP_ID_CONFIG, "test-messages",
+      ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
   }
 
   @Bean
@@ -52,7 +65,7 @@ public class BackOfficeConfiguration {
   }
 
   @Bean
-  public ConsumerRepository getConsumerRepository(){
-    return new ConsumerRepository(arbitraryClient());
+  public ConsumerRepository getConsumerRepository(KafkaConsumer kafkaConsumer){
+    return new ConsumerRepository(arbitraryClient(), kafkaConsumer);
   }
 }
