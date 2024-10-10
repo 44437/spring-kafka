@@ -32,6 +32,6 @@
 - [ ] kafka streams
 - [X] consumer groups
 - [X] offset management
-- [ ] retention policy
+- [X] retention policy
 - [ ] exactly once
 - [ ] leader election
