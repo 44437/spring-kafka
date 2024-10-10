@@ -38,7 +38,8 @@ public class BackOfficeConfiguration {
       ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
       JsonDeserializer.TRUSTED_PACKAGES, "*",
       ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
-      ConsumerConfig.GROUP_ID_CONFIG, "test-messages");
+      ConsumerConfig.GROUP_ID_CONFIG, "test-messages",
+      ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, 5000);// default=3000
   }
 
   @Bean

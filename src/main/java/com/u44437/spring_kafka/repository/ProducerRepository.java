@@ -20,7 +20,7 @@ public class ProducerRepository {
       RecordMetadata metadata = kafkaOperations.send(
               new ProducerRecord<>(
                       Constants.TOPIC_FIRST,
-                      partitionKey,
+//                      partitionKey, // uncommented, in order to distribute the messages with the round-robin algorithm
                       Constants.KEY_ORDERS,
                       messageReq.toJSONString()))
               .get()

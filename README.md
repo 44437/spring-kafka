@@ -28,9 +28,9 @@
 - [X] default commit and subscribe concepts have been used, play with them.
 - [X] auto.commit.interval.ms: disable it, manual commit is the key.
 - [X] client.dns.lookup
-- [ ] kafka connect
+- [X] kafka connect `later on along with debezium`
 - [ ] kafka streams
-- [ ] consumer groups
+- [X] consumer groups
 - [X] offset management
 - [ ] retention policy
 - [ ] exactly once
