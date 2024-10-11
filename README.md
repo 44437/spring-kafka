@@ -33,5 +33,6 @@
 - [X] consumer groups
 - [X] offset management
 - [X] retention policy
-- [ ] exactly once
+- [X] exactly once
+- [X] transactional consuming
 - [ ] leader election
