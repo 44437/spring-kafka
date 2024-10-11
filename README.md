@@ -3,7 +3,7 @@
 - Watch out for importing json serializer
 - TDD has died
 - Synchronous producing has been used here
-- You may be required to divorce/combine consumer groups (for conduktor and spring)
+- You may be required to divorce/combine consumer groups (for conduktor and spring) `UI tools don't consume messages: The default variable of auto.offset.reset is 'latest'. When the app runs from scratch and CONSUMER GROUP doesn't know its offset, the offset will be determined as the offset of the latest message`
 ---
 
 <h3>Bugs:</h3>
@@ -37,3 +37,5 @@
 - [X] transactional consuming
 - [X] leader election
 - [X] reassignment
+- [ ] schema registry
+- [ ] ksqlDB
