@@ -51,7 +51,8 @@ public class BackOfficeConfiguration {
       JsonDeserializer.TRUSTED_PACKAGES, "*",
       ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class,
       ConsumerConfig.GROUP_ID_CONFIG, "test-messages",
-      ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
+      ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false,
+      ConsumerConfig.ISOLATION_LEVEL_CONFIG, "read_committed");// default: read_uncommitted: it consumes committed and uncommitted messages
   }
 
   @Bean
