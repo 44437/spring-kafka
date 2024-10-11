@@ -35,4 +35,5 @@
 - [X] retention policy
 - [X] exactly once
 - [X] transactional consuming
-- [ ] leader election
+- [X] leader election
+- [X] reassignment
