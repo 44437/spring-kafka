@@ -1,7 +1,7 @@
 package com.u44437.spring_kafka.util;
 
 public class Constants {
-  public static final String TOPIC_FIRST = "first";
+  public static final String TOPIC_FIRST = "topic-0";
 
   public static final String CONSUMER_GROUP_ID = "test-messages";
 
