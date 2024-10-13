@@ -38,4 +38,4 @@
 - [X] leader election
 - [X] reassignment
 - [X] schema registry
-- [ ] ksqlDB
+- [X] ksqlDB
