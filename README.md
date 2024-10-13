@@ -8,9 +8,9 @@
 
 <h3>Bugs:</h3>
 
-- <font color="green"><sup>*done*</sup></font> Sending strings butchered the message ffff but it works :p
+- $${\color{green} done}$$ Sending strings butchered the message ffff but it works :p
  `Edit: It may be fixed through serializer interface but it is rather complicated, use a package (json, avro (the best) OR jackson, gson) for now. Edit-2: Avro has been used with schema registry.`
-- <font color="green"><sup>*done*</sup></font> IsCompacted says NO. How, why? `It pertains to 'compact' in cleanup.policy, namely no bug here`
+- $${\color{green} done}$$ IsCompacted says NO. How, why? `It pertains to 'compact' in cleanup.policy, namely no bug here`
 ---
 
 <h3>Tasks:</h3>
