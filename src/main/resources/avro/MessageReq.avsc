@@ -1,0 +1,9 @@
+{
+  "type": "record",
+  "name": "MessageReq",
+  "namespace": "com.u44437.spring_kafka.model",
+  "fields": [
+    { "name": "main", "type": "string" },
+    { "name": "comment", "type": "string" }
+  ]
+}

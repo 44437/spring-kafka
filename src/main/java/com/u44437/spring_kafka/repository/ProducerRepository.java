@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProducerRepository {
-  private final KafkaOperations<String, String> kafkaOperations;
+  private final KafkaOperations<String, Object> kafkaOperations;
 
-  public ProducerRepository(KafkaOperations<String, String> kafkaOperations) {
+  public ProducerRepository(KafkaOperations<String, Object> kafkaOperations) {
     this.kafkaOperations = kafkaOperations;
   }
 
@@ -22,7 +22,7 @@ public class ProducerRepository {
                       Constants.TOPIC_FIRST,
 //                      partitionKey, // uncommented, in order to distribute the messages with the round-robin algorithm
                       Constants.KEY_ORDERS,
-                      messageReq.toJSONString()))
+                      messageReq))
               .get()
               .getRecordMetadata();
 
