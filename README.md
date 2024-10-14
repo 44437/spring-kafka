@@ -29,7 +29,9 @@
 - [X] auto.commit.interval.ms: disable it, manual commit is the key.
 - [X] client.dns.lookup
 - [X] kafka connect `later on along with debezium`
-- [ ] kafka streams
+- [X] kafka streams w/ streams dsl
+- [ ] kafka streams w/ processor api
+- [ ] windowing
 - [X] consumer groups
 - [X] offset management
 - [X] retention policy

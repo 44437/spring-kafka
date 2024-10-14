@@ -71,6 +71,16 @@
 			<artifactId>kafka-avro-serializer</artifactId>
 			<version>7.7.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-streams</artifactId>
+			<version>3.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>3.8.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
