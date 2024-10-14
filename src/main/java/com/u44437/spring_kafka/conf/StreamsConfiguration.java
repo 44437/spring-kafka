@@ -4,10 +4,8 @@ import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
-import org.apache.kafka.streams.kstream.KStream;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 
 import java.util.Properties;
 
@@ -25,7 +23,7 @@ public class StreamsConfiguration {
   }
 
   @Bean
-  @DependsOn("kStream")
+//  @DependsOn("kStream")
   public KafkaStreams kafkaStreams(StreamsBuilder streamsBuilder, Properties properties) {
     KafkaStreams kafkaStreams = new KafkaStreams(streamsBuilder.build(), properties);
 
@@ -36,15 +34,15 @@ public class StreamsConfiguration {
     return kafkaStreams;
   }
 
-  @Bean
-  public KStream kStream (StreamsBuilder streamsBuilder) {
-    KStream<String, String> stream = streamsBuilder.stream("input-topic");
-    stream.foreach((key, value) -> System.out.println("Key: " + key + ", Value: " + value));
-
-    stream.to("output-topic");
-
-    return stream;
-  }
+//  @Bean
+//  public KStream kStream (StreamsBuilder streamsBuilder) {
+//    KStream<String, String> stream = streamsBuilder.stream("input-topic");
+//    stream.foreach((key, value) -> System.out.println("Key: " + key + ", Value: " + value));
+//
+//    stream.to("output-topic");
+//
+//    return stream;
+//  }
 
   @Bean
   public StreamsBuilder streamsBuilder() {
