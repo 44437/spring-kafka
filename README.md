@@ -31,7 +31,7 @@
 - [X] kafka connect `later on along with debezium`
 - [X] kafka streams w/ streams dsl
 - [ ] kafka streams w/ processor api
-- [ ] windowing
+- [X] windowing
 - [X] consumer groups
 - [X] offset management
 - [X] retention policy
